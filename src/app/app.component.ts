@@ -8,13 +8,16 @@ import { Component } from '@angular/core';
 
 // Date Binding: associal de dados. Faz uma asscociação com uma fonte de dados
 // expression {{title}}
+
+// um modulo é uma maneira de agrupar, inicialmente, componentes afins
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'alurapic';
-  description = "mar";
-  url = '../assets/6457dc8f063f284fe17e519dc28b5437.jpg'
+  // title = 'alurapic';
+  // description = "mar";
+  // url = '.'
+
 }
