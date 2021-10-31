@@ -3,7 +3,7 @@
     ** ngFor="": vc quer iterar sobre quem. Vc que referciar photos por qual nome ()
 -->
 <!-- preciso fazer o dataBinding para pegar o valor do componente -->
-<app-photo *ngFor="let photo of photos" [url]="photo.url" [description]="photo.description"></app-photo>
+<!-- <app-photo *ngFor="let photo of photos" [url]="photo.url" [description]="photo.description"></app-photo> -->
 <!-- <app-photo url="../assets/c011dc29f7b4cac6f72c3aa93f2d65ea.jpg" description="noite brilhante"></app-photo> -->
 
 <!-- alt: descrição da imagem -->
@@ -11,3 +11,6 @@
   fonte de dados sai do componente para o template -->
 <!-- <h1>{{title}}</h1>
 <img class="img-thumbnail" [src]="url" [alt]="description"> -->
+
+<!-- roter-outlet: é uma diretiva que abre uma grande lacuna -->
+<router-outlet></router-outlet>
