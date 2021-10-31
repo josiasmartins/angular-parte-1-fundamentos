@@ -1,9 +1,11 @@
-import { AppRoutingModule } from './app.routing.module';
-import { PhotosModule } from './photos/photos.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { ErrorsModule } from './errors/errors.module';
+import { AppRoutingModule } from './app.routing.module';
+import { PhotosModule } from './photos/photos.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { AppComponent } from './app.component';
     // BrowserAngular: traz varios recursos para o navegador
     BrowserModule,
     PhotosModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // ErrorsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

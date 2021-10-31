@@ -5,11 +5,13 @@ import { NgModule } from '@angular/core';
 import { PhotoListComponent } from './photo-list/photo-list.component';
 import { PhotoComponent } from './photo/photo.component';
 import { PhotoFormComponent } from './photo-form/photo-form.component';
+import { PhotosComponent } from './photo-list/photos/photos.component';
 // esse módulo vai declarar todos os componentes que diz respito a fotos
 @NgModule({
   // declarations entra tudo que o módulo tem
   declarations: [
     PhotoComponent,
+    PhotosComponent,
     PhotoListComponent,
     PhotoFormComponent
   ],

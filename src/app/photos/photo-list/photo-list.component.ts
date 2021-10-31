@@ -1,3 +1,4 @@
+import { Photo } from './../photo/photo';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PhotoService } from '../photo/photo.service';
@@ -14,7 +15,7 @@ export class PhotoListComponent implements OnInit {
   // url = '.'
 
   // cada item do objeto array, é um objeto photo
-  photos: Object = [];
+  photos: Photo[] = [];
   // uma classe abstrata, não usar o operador new
   // deve importar o HttpClientModule no appModule e no componente para fazer requisição ajax
 

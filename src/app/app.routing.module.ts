@@ -1,3 +1,4 @@
+import { ErrorsComponent } from './errors/erros.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // import { NotFoundComponent} from '@angular/router/router'
@@ -10,7 +11,7 @@ const routes: Routes = [
   // assim, conseguimos parametrizar as rotas
   { path: 'user/:userName', component: PhotoListComponent },
   { path: 'p/add', component: PhotoFormComponent},
-  // { path: '**', component: NotFoundComponent }
+  // { path: '**', component: ErrorsComponent }
 ];
 
 @NgModule({
