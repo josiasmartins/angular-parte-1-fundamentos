@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { PhotoComponent } from './photo/photo.component';
@@ -6,6 +7,7 @@ import { PhotoComponent } from './photo/photo.component';
   // declarations entra tudo que o módulo tem
   declarations: [PhotoComponent],
   // para que ele seja visto no appModule, preciso exportar esse componente
-  exports: [ PhotoComponent]
+  exports: [ PhotoComponent],
+  imports: [HttpClientModule]
 })
 export class PhotosModule {}

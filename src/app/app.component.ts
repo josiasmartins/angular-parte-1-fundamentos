@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { PhotoService } from './photos/photo/photo.service';
+import { Component, OnInit } from '@angular/core';
 
 // decorate: é uma sintaxe especial que pode colocar uma meta informação sobre uma determinada classe
 // meta-informação: crio instancia dela classe, crio um objeto
@@ -15,25 +16,41 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   // title = 'alurapic';
   // description = "mar";
   // url = '.'
 
   // cada item do objeto array, é um objeto photo
-  photos = [
-    {
-      url: "../assets/c011dc29f7b4cac6f72c3aa93f2d65ea.jpg",
-      description: "noite brilhante"
-    },
-    {
-      url: "../assets/6457dc8f063f284fe17e519dc28b5437.jpg",
-      description: "mar"
-    },
-    {
-      url: "../assets/6457dc8f063f284fe17e519dc28b5437.jpg",
-      description: "mar"
-    }
-  ]
+  photos: Object = [];
+  // uma classe abstrata, não usar o operador new
+  // deve importar o HttpClientModule no appModule e no componente para fazer requisição ajax
 
+  constructor(private photoService: PhotoService) {
+
+    // http, realiza uma requisição get
+    // Observable: vai observar
+    // o observaeble não vai nesse endereço, mas o subscribe() vai avisar
+    // http
+    //   .get<Object[]>('http://localhost:3000/flavio/photos')
+    //   // se der certo, ele vai capturar os dados numa function
+    //   .subscribe(
+    //     photos => this.photos = photos,
+    //     // tratamento de erro
+    //     err => console.log(err)
+    //     );
+
+
+  }
+
+  // qualquer codigo de inicialização, configuração faz no ngOnIniti()
+  ngOnInit(): void {
+
+    this.photoService
+    .listfromUser('flavio')
+    .subscribe(photos => {
+        console.log(photos[0].userId),
+        this.photos = photos
+      });
+  }
 }
