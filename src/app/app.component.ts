@@ -20,4 +20,20 @@ export class AppComponent {
   // description = "mar";
   // url = '.'
 
+  // cada item do objeto array, é um objeto photo
+  photos = [
+    {
+      url: "../assets/c011dc29f7b4cac6f72c3aa93f2d65ea.jpg",
+      description: "noite brilhante"
+    },
+    {
+      url: "../assets/6457dc8f063f284fe17e519dc28b5437.jpg",
+      description: "mar"
+    },
+    {
+      url: "../assets/6457dc8f063f284fe17e519dc28b5437.jpg",
+      description: "mar"
+    }
+  ]
+
 }
