@@ -1,5 +1,5 @@
 import { Photo } from './photo';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 const API = 'http://localhost:3000'
@@ -21,6 +21,14 @@ export class PhotoService {
       .get<Photo[]>(API + '/'+ userName + '/photos');
       // não posso fazer o subscribe aqui; só chamo ele quando for buscar os dados
       // .subscribe(photos => this.photo = photos);
+  }
+
+  listfromUserPaginated(userName: string, page: number) {
+    const params = new HttpParams().append('page', page.toString())
+    return  this.http
+    // em javaScript se uma chave tem o mesmo nome, posso omitir
+    // { params: params } para { params }
+      .get<Photo[]>(API + '/'+ userName + '/photos', { params});
   }
 }
 // diferença entre string e String
