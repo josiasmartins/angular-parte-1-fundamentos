@@ -10,4 +10,21 @@
 
  -->
 
-<ap-photos [photos]="photos"></ap-photos>
+ <!-- accesibilidade -->
+ <!-- placeholder: indica o que ele faz -->
+ <!-- autofoucus: ganha um foco assim que a página é carregada -->
+ <!-- keyup: estou pegando o valor do input e jogando na propriedade filter -->
+ <div class="text-center mt-3 mb-3">
+   <form>
+     <input class="rounded"
+     type="search"
+     placeholder="search..."
+     autofocus
+     (keyup)="filter = $event.target.value">
+   </form>
+ </div>
+ <!-- pipe: é um tubo
+ {{nome | uppercase}} -->
+
+<ap-photos [photos]="photos | filterByDescription : filter"></ap-photos>
+

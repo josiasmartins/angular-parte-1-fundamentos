@@ -16,6 +16,8 @@ export class PhotoListComponent implements OnInit {
 
   // cada item do objeto array, é um objeto photo
   photos: Photo[] = [];
+  filter: string = '';
+  nome = "ibag"
   // uma classe abstrata, não usar o operador new
   // deve importar o HttpClientModule no appModule e no componente para fazer requisição ajax
 

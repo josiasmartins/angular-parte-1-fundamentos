@@ -1,9 +1,12 @@
+<p class="text-center text-muted" *ngIf="!photos.length">
+  Sorry, no photos
+</p>
 <!-- ol: lista ordenada -->
 <ol class="list-unstyled row">
   <li *ngFor="let cols of rows" class="row">
     <div *ngFor="let photo of cols" class="col-4">
       <app-photo
-        [url]="photo.url"
+        [url]="photo.url"th
         [description]="photo.description">
       </app-photo>
     </div>
