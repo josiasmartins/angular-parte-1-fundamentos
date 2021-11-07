@@ -7,6 +7,7 @@ import { PhotoComponent } from './photo/photo.component';
 import { PhotoFormComponent } from './photo-form/photo-form.component';
 import { PhotosComponent } from './photo-list/photos/photos.component';
 import { FilterByDescriptionPipe } from './photo-list/filter-by-description.pipe.';
+import { LoadButtonComponent } from './photo-list/load-button/load-button.component';
 // esse módulo vai declarar todos os componentes que diz respito a fotos
 @NgModule({
   // declarations entra tudo que o módulo tem
@@ -15,7 +16,8 @@ import { FilterByDescriptionPipe } from './photo-list/filter-by-description.pipe
     PhotosComponent,
     PhotoListComponent,
     PhotoFormComponent,
-    FilterByDescriptionPipe
+    FilterByDescriptionPipe,
+    LoadButtonComponent
   ],
   // para que ele seja visto no appModule, preciso exportar esse componente
   // exports: [ PhotoComponent],

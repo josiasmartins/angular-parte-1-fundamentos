@@ -20,7 +20,10 @@ export class PhotoListComponent implements OnInit, OnDestroy {
   // cada item do objeto array, é um objeto photo
   photos: Photo[] = [];
   filter: string = '';
-  debounce: Subject<string> = new Subject<string>()
+  debounce: Subject<string> = new Subject<string>();
+  hasMore: boolean = true;
+  currencyPage: number = 1;
+  userName: string = '';
 
   // uma classe abstrata, não usar o operador new
   // deve importar o HttpClientModule no appModule e no componente para fazer requisição ajax
@@ -50,7 +53,8 @@ export class PhotoListComponent implements OnInit, OnDestroy {
     //   });
 
     // esse snapshot data permite pegar o valor do resolver
-    this.photos = this.activatedRoute.snapshot.data.photos
+    this.userName = this.activatedRoute.snapshot.params.userName;
+    this.photos = this.activatedRoute.snapshot.data['photos'];
 
     // Observable só pode emitir e obter valores deles
     // Subject: pode emiter um valor através do next(); e escutar esse valor e escrever nesse sub para ter acesso ao valor
@@ -64,5 +68,15 @@ export class PhotoListComponent implements OnInit, OnDestroy {
   // ele destroi o componente quando for navegar para outra rota
   ngOnDestroy(): void {
     this.debounce.unsubscribe();
+  }
+
+  load() {
+    // realiza um incremento
+    this.photoService
+      .listfromUserPaginated(this.userName, ++this.currencyPage)
+      .subscribe(photos => {
+        this.photos = this.photos.concat(photos);
+        if(!photos.length) this.hasMore = false;
+      })
   }
 }
