@@ -14,20 +14,14 @@
  <!-- placeholder: indica o que ele faz -->
  <!-- autofoucus: ganha um foco assim que a página é carregada -->
  <!-- keyup: estou pegando o valor do input e jogando na propriedade filter -->
- <div class="text-center mt-3 mb-3">
-   <form>
-     <!-- programa de acessibilidade deve ignorar isso -->
-     <i aria-hidden="true" class="fa fa-search mr-1"></i>
-     <input class="rounded"
-     type="search"
-     placeholder="search..."
-     autofocus
-     (keyup)="debounce.next($event.target.value)">
-   </form>
- </div>
+
  <!-- pipe: é um tubo
  {{nome | uppercase}} -->
 
+ <!-- $event: é o valor que passou pro emit(filter), ou seja o filter -->
+ <ap-search
+    (onTyping)="filter = $event" [value]="filter">
+ </ap-search>
 <ap-photos [photos]="photos | filterByDescription : filter"></ap-photos>
 
 <!-- event binding -->

@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators'
 
 import { Photo } from './../photo/photo';
 import { PhotoService } from '../photo/photo.service';
@@ -11,7 +9,7 @@ import { PhotoService } from '../photo/photo.service';
   templateUrl: './photo-list.component.html',
   styleUrls: ['./photo-list.component.css']
 })
-export class PhotoListComponent implements OnInit, OnDestroy {
+export class PhotoListComponent implements OnInit {
 
    // title = 'alurapic';
   // description = "mar";
@@ -20,7 +18,6 @@ export class PhotoListComponent implements OnInit, OnDestroy {
   // cada item do objeto array, é um objeto photo
   photos: Photo[] = [];
   filter: string = '';
-  debounce: Subject<string> = new Subject<string>();
   hasMore: boolean = true;
   currencyPage: number = 1;
   userName: string = '';
@@ -59,22 +56,18 @@ export class PhotoListComponent implements OnInit, OnDestroy {
     // Observable só pode emitir e obter valores deles
     // Subject: pode emiter um valor através do next(); e escutar esse valor e escrever nesse sub para ter acesso ao valor
     // this.debounce.next('f');
-    this.debounce
-      .pipe(debounceTime(300))
-      .subscribe(filter => this.filter = filter);
+
   }
 
   // ciclo de vida do componente
   // ele destroi o componente quando for navegar para outra rota
-  ngOnDestroy(): void {
-    this.debounce.unsubscribe();
-  }
 
   load() {
     // realiza um incremento
     this.photoService
       .listfromUserPaginated(this.userName, ++this.currencyPage)
       .subscribe(photos => {
+        this.filter = '';
         this.photos = this.photos.concat(photos);
         if(!photos.length) this.hasMore = false;
       })
